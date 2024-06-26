@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background: linear-gradient(135deg, rgb(226, 238, 218), #d3cfcf, rgb(226, 238, 218));
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+#root {
+  position: absolute;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 15% 5% 80%;
+  grid-template-areas: "header" "nav" "content";
+}
+
+/*# sourceMappingURL=index.css.map */
