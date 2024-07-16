@@ -8,10 +8,10 @@ const SignInBtn = () => {
 
   return (
     <div ref={ref} className="page-header__sign-in-btn">
-      <span onClick={() => setIsComponentVisible(prev => !prev)}>
-        <CgLogIn />
-        Sign in?
-      </span>
+      <button onClick={() => setIsComponentVisible(prev => !prev)}>
+        <CgLogIn className='icon'/>
+        Sign in
+      </button>
       {isComponentVisible && (
         <SignInWindow setIsComponentVisible={setIsComponentVisible} />
       )}

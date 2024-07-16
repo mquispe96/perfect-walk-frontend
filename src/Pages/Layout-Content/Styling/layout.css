@@ -5,17 +5,25 @@
 }
 
 .page-header {
-  border: 1px solid black;
   grid-area: "header";
   display: grid;
   grid-template-columns: 2fr 2fr 1fr;
   align-items: center;
+  background: rgb(135, 175, 95);
+  color: white;
+  padding: 1rem;
+}
+.page-header .icon {
+  margin-right: 0.3rem;
 }
 .page-header .link {
   cursor: pointer;
+  display: flex;
+  align-items: center;
   text-decoration: none;
   color: black;
   margin: 0 3%;
+  color: white;
 }
 .page-header__nav-bar {
   grid-column: 1/span 1;
@@ -35,8 +43,28 @@
   display: flex;
   justify-content: center;
 }
-.page-header__sign-in-btn span {
+.page-header__sign-in-btn button {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: 0.2rem solid white;
+  border-radius: 1.2rem;
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.sign-in-window {
+  border: 1px solid black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media only screen and (max-width: 480px) {
@@ -62,6 +90,8 @@
     border-bottom-left-radius: 1.2rem;
     border-bottom-right-radius: 1.2rem;
     position: absolute;
+    z-index: 1;
+    background: white;
     top: 125%;
     left: 0;
     display: flex;

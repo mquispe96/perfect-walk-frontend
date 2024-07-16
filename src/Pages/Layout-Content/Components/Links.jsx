@@ -9,19 +9,19 @@ const Links = ({handleMenuClick}) => {
     return (
       <>
         <Link className="link" to="/" onClick={handleMenuClick}>
-          <RiHome2Line />
+          <RiHome2Line className='icon'/>
           Home
         </Link>
         <Link className="link" to="/Weather" onClick={handleMenuClick}>
-          <TiWeatherCloudy />
+          <TiWeatherCloudy className='icon'/>
           Weather
         </Link>
         <Link className="link" to="/Places" onClick={handleMenuClick}>
-          <GrLocation />
+          <GrLocation className='icon'/>
           Places
         </Link>
         <Link className="link" to="/About" onClick={handleMenuClick}>
-          <RiFileInfoLine />
+          <RiFileInfoLine className='icon'/>
           About
         </Link>
       </>
@@ -30,19 +30,19 @@ const Links = ({handleMenuClick}) => {
   return (
     <>
       <Link className="link" to="/">
-        <RiHome2Line />
+        <RiHome2Line className='icon'/>
         Home
       </Link>
       <Link className="link" to="/Weather">
-        <TiWeatherCloudy />
+        <TiWeatherCloudy className='icon'/>
         Weather
       </Link>
       <Link className="link" to="/Places">
-        <GrLocation />
+        <GrLocation className='icon'/>
         Places
       </Link>
       <Link className="link" to="/About">
-        <RiFileInfoLine />
+        <RiFileInfoLine className='icon'/>
         About
       </Link>
     </>
