@@ -14,7 +14,7 @@ const NavDropMenu = () => {
     <nav className="page-header__nav-drop-menu-btn" ref={ref}>
       <div className="menu-position">
         <span onClick={() => setIsComponentVisible(prev => !prev)}>
-          <TiThMenu />
+          <TiThMenu className='icon' />
           Menu
         </span>
         {isComponentVisible && <Menu handleMenuClick={handleMenuClick}/>}

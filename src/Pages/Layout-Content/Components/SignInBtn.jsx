@@ -1,20 +1,15 @@
-import {useComponentVisible} from '../../Custom-Hooks/useComponentVisible.js';
-import SignInWindow from './SignInWindow';
+import { useNavigate } from 'react-router-dom';
 import {CgLogIn} from 'react-icons/cg';
 
 const SignInBtn = () => {
-  const {ref, isComponentVisible, setIsComponentVisible} =
-    useComponentVisible(false);
+  const navigate = useNavigate();
 
   return (
-    <div ref={ref} className="page-header__sign-in-btn">
-      <button onClick={() => setIsComponentVisible(prev => !prev)}>
+    <div className="page-header__sign-in-btn">
+      <button onClick={() => navigate('/login')}>
         <CgLogIn className='icon'/>
         Sign in
       </button>
-      {isComponentVisible && (
-        <SignInWindow setIsComponentVisible={setIsComponentVisible} />
-      )}
     </div>
   );
 };

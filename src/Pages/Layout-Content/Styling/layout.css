@@ -1,20 +1,24 @@
 .font-style {
-  font-size: 20px;
+  font-size: 1.3rem;
   font-weight: bold;
   font-family: cursive;
 }
 
+.icon {
+  margin-right: 0.3rem;
+  cursor: pointer;
+}
+
 .page-header {
-  grid-area: "header";
+  grid-area: header;
   display: grid;
   grid-template-columns: 2fr 2fr 1fr;
   align-items: center;
-  background: rgb(135, 175, 95);
+  background-image: url("/nav.jpg");
+  background-repeat: no-repeat;
+  background-position: 0% 60%;
+  background-size: cover;
   color: white;
-  padding: 1rem;
-}
-.page-header .icon {
-  margin-right: 0.3rem;
 }
 .page-header .link {
   cursor: pointer;
@@ -39,6 +43,7 @@
   justify-content: center;
 }
 .page-header__sign-in-btn {
+  cursor: pointer;
   grid-column: 3/span 1;
   display: flex;
   justify-content: center;
@@ -53,47 +58,95 @@
   color: white;
   padding: 0.5rem 1rem;
 }
-
-.sign-in-window {
-  border: 1px solid black;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  height: 300px;
+.page-header__user-drop-menu-btn {
+  grid-column: 3/span 1;
   display: flex;
   justify-content: center;
+}
+
+.menu-position {
+  position: relative;
+}
+.menu-position span {
+  cursor: pointer;
+  display: flex;
   align-items: center;
+}
+.menu-position .menu {
+  border: 1px solid white;
+  border-bottom-left-radius: 1.2rem;
+  border-bottom-right-radius: 1.2rem;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  right: 15%;
+  background: rgb(163, 167, 169);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 75%;
+  height: 100px;
+  padding: 5%;
+}
+.menu-position .menu .profile-btn, .menu-position .menu button {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid white;
+}
+.menu-position .menu button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-bottom: 1px solid white;
 }
 
 @media only screen and (max-width: 480px) {
   .page-header {
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
   }
   .page-header .link {
     margin: 0;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
+  }
+  .page-header__title {
+    grid-column: 1/span 2;
+    grid-row: 1/span 1;
   }
   .page-header__nav-bar {
     display: none;
   }
+  .page-header__sign-in-btn, .page-header__user-drop-menu-btn {
+    grid-column: 2/span 1;
+    grid-row: 2/span 1;
+  }
   .page-header__nav-drop-menu-btn {
+    grid-column: 1/span 1;
+    grid-row: 2/span 1;
     display: flex;
     justify-content: center;
   }
   .page-header__nav-drop-menu-btn .menu-position {
     position: relative;
   }
+  .page-header__nav-drop-menu-btn .menu-position span {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
   .page-header__nav-drop-menu-btn .menu {
-    border: 1px solid black;
+    border: 1px solid white;
     border-bottom-left-radius: 1.2rem;
     border-bottom-right-radius: 1.2rem;
     position: absolute;
     z-index: 1;
-    background: white;
-    top: 125%;
-    left: 0;
+    background: rgb(163, 167, 169);
+    top: 100%;
+    left: -30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
