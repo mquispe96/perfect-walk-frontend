@@ -22,6 +22,16 @@ html, body {
   // min-height: 700px;
 }
 
+.form-container{
+  grid-area: content;
+  display: flex;
+  background-image: url('/form.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin: .2rem;
+}
+
 // @media only screen and (max-width: 400px){
 //   #root{
 

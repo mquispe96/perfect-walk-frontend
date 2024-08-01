@@ -18,4 +18,14 @@ html, body {
   grid-template-areas: "header" "content";
 }
 
+.form-container {
+  grid-area: content;
+  display: flex;
+  background-image: url("/form.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin: 0.2rem;
+}
+
 /*# sourceMappingURL=index.css.map */
