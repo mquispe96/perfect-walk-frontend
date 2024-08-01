@@ -14,7 +14,7 @@
   display: grid;
   grid-template-columns: 2fr 2fr 1fr;
   align-items: center;
-  background-image: url('/nav.jpg');
+  background-image: url("/nav.jpg");
   background-repeat: no-repeat;
   background-position: 0% 60%;
   background-size: cover;
@@ -27,6 +27,9 @@
     color: black;
     margin: 0 3%;
     color: white;
+    &:hover {
+      text-shadow: 0 0 1rem white;
+    }
   }
   &__nav-bar {
     grid-column: 1 / span 1;
@@ -55,6 +58,15 @@
       border-radius: 1.2rem;
       color: white;
       padding: 0.5rem 1rem;
+      transition: all 0.3s;
+      &:hover {
+        background: rgb(163, 167, 169, 0.5);
+        box-shadow: 0 0 1rem 0.2rem rgb(163, 167, 169);
+      }
+      &:active {
+        background: rgb(163, 167, 169, 0.8);
+        box-shadow: none;
+      }
     }
   }
   &__user-drop-menu-btn {
@@ -70,6 +82,9 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    &:hover {
+      text-shadow: 0 0 1rem white;
+    }
   }
   .menu {
     border: 1px solid white;
@@ -86,7 +101,8 @@
     width: 75%;
     height: 100px;
     padding: 5%;
-    .profile-btn, button{
+    .profile-btn,
+    button {
       width: 100%;
       display: flex;
       justify-content: right;
@@ -94,8 +110,11 @@
       color: white;
       text-decoration: none;
       border-bottom: 1px solid white;
+      &:hover {
+        text-shadow: 0 0 1rem white;
+      }
     }
-    button{
+    button {
       background: transparent;
       border: none;
       cursor: pointer;
@@ -112,14 +131,15 @@
       margin: 0;
       border-bottom: 1px solid white;
     }
-    &__title{
+    &__title {
       grid-column: 1 / span 2;
       grid-row: 1 / span 1;
     }
     &__nav-bar {
       display: none;
     }
-    &__sign-in-btn, &__user-drop-menu-btn {
+    &__sign-in-btn,
+    &__user-drop-menu-btn {
       grid-column: 2 / span 1;
       grid-row: 2 / span 1;
     }
