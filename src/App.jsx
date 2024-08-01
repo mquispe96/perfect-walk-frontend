@@ -5,6 +5,7 @@ import Weather from './Pages/Weather-Content/Weather';
 import Places from './Pages/Places-Content/Places';
 import About from './Pages/About-Content/About';
 import LogIn from './Pages/LogIn-Content/LogIn';
+import SignUp from './Pages/SignUp-Content/SignUp';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/places" element={<Places />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<LogIn />} />
+        <Route path="/signup" element={<SignUp />} />
       </Route>
     </Routes>
   );
