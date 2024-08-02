@@ -23,13 +23,30 @@ const Layout = () => {
   const checkPath = pathname !== "/login" && pathname !== "/signup";
 
   useEffect(() => {
-    axios.get(`${BASE_URL}/userlocation/byIP`).then((res) => {
-      setLocation({
-        latitude: res.data.latitude,
-        longitude: res.data.longitude,
-        place: res.data.place,
-      });
-    });
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const place = await axios.get(`${BASE_URL}/userlocation/locationName?lat=${position.coords.latitude}&long=${position.coords.longitude}`).then((res) => res.data);
+          setLocation((prev) => ({
+            ...prev,
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            place: place.stateCode,
+          }));
+        },
+        async (err) => {
+          const res = await axios
+            .get(`${BASE_URL}/userlocation/byIP`)
+            .then((res) => res.data);
+          setLocation((prev) => ({
+            ...prev,
+            latitude: res.latitude,
+            longitude: res.longitude,
+            place: res.place,
+          }));
+        }
+      );
+    }
   }, []);
 
   useEffect(() => {
