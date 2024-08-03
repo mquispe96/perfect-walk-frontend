@@ -3,6 +3,7 @@ import axios from "axios";
 import { PageContext } from "../../Context/PageContext";
 import { formatDate } from "../../Helper-Functions/formatDate";
 import Comment from "./Comment";
+import EditForm from "./EditForm";
 import { FcNext, FcPrevious } from "react-icons/fc";
 import { BiSolidLike } from "react-icons/bi";
 import { MdEdit } from "react-icons/md";
@@ -34,10 +35,6 @@ const Post = ({ post, setPosts }) => {
   const [deletePost, setDeletePost] = useState(false);
 
   const [editPost, setEditPost] = useState(false);
-  const [removeSelectedMedia, setRemoveSelectedMedia] = useState([]);
-  const [postText, setPostText] = useState(text);
-  const [postLocation, setPostLocation] = useState(location);
-  const [media, setMedia] = useState([]);
 
   const nextPreview = () => {
     setPreviewIndex((prev) => {
@@ -119,59 +116,73 @@ const Post = ({ post, setPosts }) => {
 
   return (
     <div className="post-container">
-      <div className="post-container__header">
-        <h4>{createdBy}</h4>
-        {userId === user.id && (
-          <div className="post-settings-btn">
-            {!deletePost && (
-              <>
-                <button type="button" onClick={() => setEditPost(prev => !prev)}>
-                  <MdEdit />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setDeletePost(true);
-                    setTimeout(() => {
-                      setDeletePost(false);
-                    }, 5000);
-                  }}
-                >
-                  <CgRemove />
-                </button>
-              </>
+      {editPost ? (
+        <EditForm
+          post={post}
+          setPosts={setPosts}
+          setEditPost={setEditPost}
+          userId={userId}
+        />
+      ) : (
+        <>
+          <div className="post-container__header">
+            <h4>{createdBy}</h4>
+            {userId === user.id && (
+              <div className="post-settings-btn">
+                {!deletePost && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => setEditPost((prev) => !prev)}
+                    >
+                      <MdEdit />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setDeletePost(true);
+                        setTimeout(() => {
+                          setDeletePost(false);
+                        }, 5000);
+                      }}
+                    >
+                      <CgRemove />
+                    </button>
+                  </>
+                )}
+                {deletePost && (
+                  <>
+                    <button type="button" onClick={() => setDeletePost(false)}>
+                      <TiCancelOutline />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        try {
+                          await axios.delete(`${BASE_URL}/posts/${id}`);
+                          setPosts((prev) =>
+                            prev.filter((post) => post.id !== id)
+                          );
+                        } catch (err) {
+                          console.log(err.response.data.error);
+                        }
+                      }}
+                    >
+                      <GiConfirmed />
+                    </button>
+                  </>
+                )}
+              </div>
             )}
-            {deletePost && (
-              <>
-                <button type="button" onClick={() => setDeletePost(false)}>
-                  <TiCancelOutline />
-                </button>
-                <button
-                  type="button"
-                  onClick={async () => {
-                    try {
-                      await axios.delete(`${BASE_URL}/posts/${id}`);
-                      setPosts((prev) =>
-                        prev.filter((post) => post.id !== id)
-                      );
-                    } catch (err) {
-                      console.log(err.response.data.error);
-                    }
-                  }}
-                >
-                  <GiConfirmed />
-                </button>
-              </>
-            )}
+            <h5>on: {formatDate(createdOn)}</h5>
+            {location && <h5>at: {location}</h5>}
           </div>
-        )}
-        <h5>on: {formatDate(createdOn)}</h5>
-        {location && <h5>at: {location}</h5>}
-      </div>
-      <div className="post-container__body-text">
-        {text && <p>{text}</p>}
-      </div>
-      <div className="post-container__body-media">{mediaPreview}</div>
+          <div className="post-container__body-text">
+            {text && <p>{text}</p>}
+          </div>
+          <div className="post-container__body-media">{mediaPreview}</div>
+        </>
+      )}
       <div className="post-container__likes">
         <p>{postLikes} likes</p>
         <button type="button" onClick={increaseLike}>
@@ -209,13 +220,12 @@ const Post = ({ post, setPosts }) => {
           }}
         >
           <h4>Comments</h4>
-          {comments.map((comment, idx) => (
+          {comments.map((comment) => (
             <Comment
               key={comment.id}
               comment={comment}
               setComments={setComments}
               comments={comments}
-              idx={idx}
             />
           ))}
         </div>

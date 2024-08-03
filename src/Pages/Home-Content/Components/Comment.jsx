@@ -11,7 +11,7 @@ import { GiBackwardTime } from "react-icons/gi";
 import { GiConfirmed } from "react-icons/gi";
 import { TiCancelOutline } from "react-icons/ti";
 
-const Comment = ({ comment, setComments, comments, idx }) => {
+const Comment = ({ comment, setComments }) => {
   const BASE_URL = import.meta.env.VITE_API_URL;
   const { user } = useContext(PageContext);
   const {

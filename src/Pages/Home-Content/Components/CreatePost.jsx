@@ -31,13 +31,13 @@ const CreatePost = ({ setPosts }) => {
       setError("Post must contain text or media");
       setTimeout(() => {
         setError("");
-      }, 3000);
+      }, 5000);
       return;
     } else if (media.length > 5) {
-      setError("Post can only contain up to 5 media files");
+      setError("Post can only contain up to 5 media files in total");
       setTimeout(() => {
         setError("");
-      }, 3000);
+      }, 5000);
       return;
     } else {
       const formData = new FormData();
@@ -55,7 +55,7 @@ const CreatePost = ({ setPosts }) => {
         setError(err.response.data);
         setTimeout(() => {
           setError("");
-        }, 3000);
+        }, 5000);
       }
     }
   };
@@ -131,6 +131,15 @@ const CreatePost = ({ setPosts }) => {
     }
   }, [media, previewIndex]);
 
+  useEffect(() => {
+    if(media.length > 5) {
+      setError("Post can only contain up to 5 media files in total");
+      setTimeout(() => {
+        setError("");
+      }, 5000);
+    }
+  }, [media]);
+
   return (
     <div className="create-post">
       <form className="create-form-container" onSubmit={handleSubmit}>
@@ -156,8 +165,7 @@ const CreatePost = ({ setPosts }) => {
           <button type="button" onClick={onChooseFile}>
             <LuImagePlus />
           </button>
-          {media.length <= 5 && <p>media: {media.length} / 5</p>}
-          {media.length > 5 && <p>Need to remove: {media.length - 5} file/s</p>}
+          <p>media: {media.length} / 5</p>
         </div>
         <div className="create-form-container__post-text">
           <div className="regular-input">
