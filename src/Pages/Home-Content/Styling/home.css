@@ -3,6 +3,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 2rem;
+  overflow: hidden;
 }
 .home-container__left-panel {
   grid-column: 1/span 1;
@@ -10,6 +11,8 @@
   flex-direction: column;
   align-items: center;
   padding: 2rem;
+  overflow-y: auto;
+  row-gap: 1rem;
 }
 
 .create-post {
@@ -68,7 +71,9 @@
   border-radius: 1.2rem;
 }
 
-.delete-media-btn, .prev-preview-btn, .next-preview-btn {
+.delete-media-btn,
+.prev-preview-btn,
+.next-preview-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,6 +110,228 @@
   border-radius: 50%;
   padding: 0.5rem;
   cursor: pointer;
+}
+
+.posts-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.post-container {
+  border-radius: 1.2rem;
+  box-shadow: 0 0 0.5rem 0.2rem rgba(163, 167, 169, 0.5);
+  display: grid;
+  grid-template-rows: repeat(5, auto);
+  row-gap: 0.5rem;
+  padding: 0.75rem;
+}
+.post-container__header {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  align-items: center;
+  padding: 0 0.5rem;
+}
+.post-container__body-text {
+  padding: 0 0.5rem;
+}
+.post-container__body-media {
+  display: grid;
+  place-items: center;
+}
+.post-container__likes {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.post-container__likes button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: skyblue;
+  margin-left: 0.5rem;
+  transition: color 0.3s;
+}
+.post-container__likes button:hover {
+  color: blue;
+}
+.post-container__likes button:active {
+  color: darkblue;
+}
+.post-container__footer {
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+}
+
+.post-settings-btn {
+  position: absolute;
+  top: -20%;
+  right: 0;
+}
+.post-settings-btn button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin: 0 0.2rem;
+}
+.post-settings-btn button:hover {
+  color: skyblue;
+}
+
+.comment-form {
+  display: flex;
+  align-items: center;
+}
+.comment-form__btns {
+  display: flex;
+}
+.comment-form__btns button {
+  margin: 0 0.5rem;
+}
+
+.comments-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.comment-container {
+  position: relative;
+  border-radius: 1.2rem;
+  box-shadow: 0 0 0.5rem 0.2rem rgba(163, 167, 169, 0.5);
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  padding: 0.5rem;
+}
+.comment-container__header {
+  display: flex;
+  align-items: center;
+}
+.comment-container__header h6 {
+  margin-left: 0.5rem;
+}
+.comment-container__body-text {
+  padding: 0 0.5rem;
+}
+.comment-container__body-text p, .comment-container__body-text form {
+  margin: 0.5rem 0;
+}
+.comment-container__likes {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.comment-container__likes button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: skyblue;
+  margin-left: 0.5rem;
+  transition: color 0.3s;
+}
+.comment-container__likes button:hover {
+  color: blue;
+}
+.comment-container__likes button:active {
+  color: darkblue;
+}
+.comment-container__footer {
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+}
+
+.comment-settings-btn {
+  position: absolute;
+  top: 3%;
+  right: 2%;
+}
+.comment-settings-btn button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 0 0.5rem;
+}
+.comment-settings-btn button:hover {
+  color: skyblue;
+}
+
+.sub-comment-container {
+  position: relative;
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  padding: 0.5rem;
+  border-bottom: 1px solid rgba(163, 167, 169, 0.5);
+  margin-top: 0.5rem;
+  overflow: scroll;
+}
+.sub-comment-container__header {
+  display: flex;
+  align-items: center;
+}
+.sub-comment-container__header h6 {
+  margin-left: 0.5rem;
+}
+.sub-comment-container__body-text {
+  padding: 0 0.5rem;
+}
+.sub-comment-container__body-text p, .sub-comment-container__body-text form {
+  margin: 0.5rem 0;
+}
+.sub-comment-container__likes {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.sub-comment-container__likes button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: skyblue;
+  margin-left: 0.5rem;
+  transition: color 0.3s;
+}
+.sub-comment-container__likes button:hover {
+  color: blue;
+}
+.sub-comment-container__likes button:active {
+  color: darkblue;
+}
+
+.sub-comment-settings-btn {
+  position: absolute;
+  top: 5%;
+  right: 2%;
+}
+.sub-comment-settings-btn button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 0 0.5rem;
+}
+.sub-comment-settings-btn button:hover {
+  color: skyblue;
+}
+
+@media only screen and (max-width: 430px) {
+  .home-container {
+    grid-template-columns: 1fr;
+  }
+  .home-container__left-panel {
+    grid-column: 1/span 1;
+    padding: 1rem;
+  }
+  .home-container__right-panel {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=home.css.map */

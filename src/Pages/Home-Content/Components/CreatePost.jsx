@@ -156,7 +156,7 @@ const CreatePost = ({ setPosts }) => {
           <button type="button" onClick={onChooseFile}>
             <LuImagePlus />
           </button>
-          {media.length <= 5 && <p>{media.length} media / out of 5</p>}
+          {media.length <= 5 && <p>media: {media.length} / 5</p>}
           {media.length > 5 && <p>Need to remove: {media.length - 5} file/s</p>}
         </div>
         <div className="create-form-container__post-text">
