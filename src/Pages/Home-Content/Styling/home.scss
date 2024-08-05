@@ -9,8 +9,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem;
+    padding: 1rem 2rem;
     overflow-y: auto;
+    row-gap: 1rem;
+  }
+  &__right-panel {
+    grid-column: 2 / span 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 2rem;
     row-gap: 1rem;
   }
 }
@@ -379,7 +387,108 @@
   }
 }
 
+.home-weather-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  padding: 2rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 0 0.5rem 0.2rem rgb(163, 167, 169, 0.5);
+  color: white;
+  font-weight: bold;
+  &__main{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    place-items: center;
+  }
+  &__footer{
+    form{
+      display: flex;
+      column-gap: 1rem;
+      background: white;
+      border-radius: 1.2rem;
+      padding: 0.5rem;
+    }
+  }
+}
 
+.recommended-place{
+  background-image: url('/map.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  padding: 2rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 0 0.5rem 0.2rem rgb(163, 167, 169, 0.5);
+  &__header{
+    h3{
+      background: white;
+      width: fit-content;
+      padding: 0 0.5rem;
+      border-radius: 1.2rem;
+    }
+  }
+  &__text{
+    h4{
+      background: white;
+      width: fit-content;
+      padding: 0 0.5rem;
+      border-radius: 1.2rem;
+    }
+  }
+  &__see-more{
+    a{
+      background: white;
+      width: fit-content;
+      padding: 0 0.5rem;
+      border-radius: 1.2rem;
+    }
+  }
+  &__text, &__see-more{
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.place-box-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__images-show{
+    width: 300px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 1.2rem;
+  }
+}
+
+.slides{
+  display: flex;
+  width: 100%;
+  animation: slideShow 15s infinite;
+  img{
+    width: 100%;
+    height: 200px;
+    flex-shrink: 0;
+  }
+}
+
+@keyframes slideShow {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(0); }
+  25% { transform: translateX(-100%); }
+  45% { transform: translateX(-100%); }
+  50% { transform: translateX(-200%); }
+  70% { transform: translateX(-200%); }
+  75% { transform: translateX(-300%); }
+  95% { transform: translateX(-300%); }
+  100% { transform: translateX(-400%); }
+}
 
 @media only screen and (max-width: 430px){
   .home-container{

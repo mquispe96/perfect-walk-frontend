@@ -26,7 +26,11 @@ const Layout = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
-          const place = await axios.get(`${BASE_URL}/userlocation/locationName?lat=${position.coords.latitude}&long=${position.coords.longitude}`).then((res) => res.data);
+          const place = await axios
+            .get(
+              `${BASE_URL}/userlocation/locationName?lat=${position.coords.latitude}&long=${position.coords.longitude}`
+            )
+            .then((res) => res.data);
           setLocation((prev) => ({
             ...prev,
             latitude: position.coords.latitude,
@@ -42,7 +46,7 @@ const Layout = () => {
             ...prev,
             latitude: res.latitude,
             longitude: res.longitude,
-            place: res.place,
+            place: res.place.stateCode,
           }));
         }
       );
