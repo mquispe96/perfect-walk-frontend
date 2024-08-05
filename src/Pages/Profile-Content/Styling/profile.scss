@@ -1,0 +1,69 @@
+.profile-container {
+  grid-area: content;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  column-gap: 2rem;
+  overflow: hidden;
+  &__left-panel {
+    grid-column: 1 / span 1;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    row-gap: 1rem;
+  }
+  &__right-panel {
+    grid-column: 2 / span 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    overflow-y: auto;
+  }
+}
+
+.profile-info {
+  border-radius: 1.2rem;
+  box-shadow: 0 0 1rem 0.2rem rgb(163, 167, 169);
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  padding: 1rem;
+  gap: 1rem;
+  &__header{
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
+  }
+  &__text{
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+  }
+  &__btns{
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}
+
+.cell {
+  display: none;
+}
+
+@media only screen and (max-width: 430px){
+  .profile-container {
+    grid-template-columns: auto;
+    overflow-y: scroll;
+    &__left-panel {
+      padding: 1rem;
+      grid-column: 1 / span 1;
+    }
+    &__right-panel {
+      display: none;
+    }
+  }
+  .cell {
+    display: flex;
+  }
+}
