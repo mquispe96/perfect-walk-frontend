@@ -48,7 +48,7 @@ const Answer = ({ question, email, setFormSection }) => {
         </div>
       </div>
       <div className="recovery-form__section main-btns">
-        <button type="button" onClick={() => navigate("/login")}>
+        <button type="button" onClick={() => navigate(-1)}>
           Cancel
         </button>
         <button type="submit">Submit</button>
