@@ -1,7 +1,7 @@
 .profile-container {
   grid-area: content;
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: repeat(2, 1fr);
   column-gap: 2rem;
   overflow: hidden;
   &__left-panel {
@@ -43,7 +43,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    row-gap: .25rem;
   }
 }
 

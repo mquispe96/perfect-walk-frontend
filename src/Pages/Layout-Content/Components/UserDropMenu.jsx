@@ -18,7 +18,7 @@ const UserDropMenu = () => {
 
   const handleLogOut = () => {
     setIsComponentVisible(false);
-    setUser(null);
+    setUser(false);
     navigate("/");
   };
 
