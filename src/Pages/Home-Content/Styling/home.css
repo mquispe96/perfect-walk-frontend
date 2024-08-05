@@ -172,6 +172,9 @@
   flex-direction: column;
   row-gap: 1rem;
 }
+.posts-container h2 {
+  margin-left: 1rem;
+}
 
 .post-container {
   border-radius: 1.2rem;

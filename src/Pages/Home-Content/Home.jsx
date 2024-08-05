@@ -9,7 +9,7 @@ const Home = () => {
   const BASE_URL = import.meta.env.VITE_API_URL;
   const { user, location, setLocation } = useContext(PageContext);
   const [posts, setPosts] = useState([]);
-  
+
   useEffect(() => {
     axios.get(`${BASE_URL}/posts`).then((res) => setPosts(res.data));
   }, []);
@@ -17,8 +17,9 @@ const Home = () => {
   return (
     <main className="home-container">
       <section className="home-container__left-panel">
-        <CreatePost setPosts={setPosts} />
+        {user && <CreatePost setPosts={setPosts} />}
         <div className="posts-container">
+          <h2>Posts</h2>
           {posts.map((post) => (
             <Post key={post.id} post={post} setPosts={setPosts} />
           ))}

@@ -58,7 +58,7 @@ const SubComment = ({ subComment, setSubComments, postId }) => {
       <div className="sub-comment-container__header">
         <h5>{commentedBy}</h5>
         <h6>on: {formatDate(createdOn)}</h6>
-        {userId === user.id && (
+        {(user && userId === user.id) && (
           <div className="sub-comment-settings-btn">
             {!deleteSubComment && (
               <>

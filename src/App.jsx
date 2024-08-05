@@ -6,6 +6,7 @@ import Places from './Pages/Places-Content/Places';
 import About from './Pages/About-Content/About';
 import LogIn from './Pages/LogIn-Content/LogIn';
 import SignUp from './Pages/SignUp-Content/SignUp';
+import ForgotPassword from './Pages/Forgot-Password-Content/ForgotPassword';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
       </Route>
     </Routes>
   );

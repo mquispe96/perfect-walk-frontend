@@ -127,7 +127,7 @@ const Post = ({ post, setPosts }) => {
         <>
           <div className="post-container__header">
             <h4>{createdBy}</h4>
-            {userId === user.id && (
+            {user && userId === user.id && (
               <div className="post-settings-btn">
                 {!deletePost && (
                   <>
@@ -189,47 +189,49 @@ const Post = ({ post, setPosts }) => {
           <BiSolidLike />
         </button>
       </div>
-      <div className="post-container__footer">
-        <form className="comment-form" onSubmit={handleSubmit}>
-          <div className="regular-input">
-            <input
-              type="text"
-              placeholder="Add a comment..."
-              value={commentText}
-              onChange={(e) => setCommentText(e.target.value)}
-            />
-          </div>
-          <div className="comment-form__btns switch-btn">
-            {commentText.length ? (
-              <button type="button">
-                <GiBackwardTime />
+      {user && (
+        <div className="post-container__footer">
+          <form className="comment-form" onSubmit={handleSubmit}>
+            <div className="regular-input">
+              <input
+                type="text"
+                placeholder="Add a comment..."
+                value={commentText}
+                onChange={(e) => setCommentText(e.target.value)}
+              />
+            </div>
+            <div className="comment-form__btns switch-btn">
+              {commentText.length ? (
+                <button type="button">
+                  <GiBackwardTime />
+                </button>
+              ) : (
+                ""
+              )}
+              <button type="submit">
+                <FaLongArrowAltRight />
               </button>
-            ) : (
-              ""
-            )}
-            <button type="submit">
-              <FaLongArrowAltRight />
-            </button>
+            </div>
+          </form>
+          <div
+            className="comments-container"
+            style={{
+              height: comments.length > 1 ? "300px" : "auto",
+              overflow: "scroll",
+            }}
+          >
+            <h4>Comments</h4>
+            {comments.map((comment) => (
+              <Comment
+                key={comment.id}
+                comment={comment}
+                setComments={setComments}
+                comments={comments}
+              />
+            ))}
           </div>
-        </form>
-        <div
-          className="comments-container"
-          style={{
-            height: comments.length > 1 ? "300px" : "auto",
-            overflow: "scroll",
-          }}
-        >
-          <h4>Comments</h4>
-          {comments.map((comment) => (
-            <Comment
-              key={comment.id}
-              comment={comment}
-              setComments={setComments}
-              comments={comments}
-            />
-          ))}
         </div>
-      </div>
+      )}
     </div>
   );
 };

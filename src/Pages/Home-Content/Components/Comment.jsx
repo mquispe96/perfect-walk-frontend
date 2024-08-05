@@ -84,7 +84,7 @@ const Comment = ({ comment, setComments }) => {
       <div className="comment-container__header">
         <h5>{commentedBy}</h5>
         <h6>on: {formatDate(createdOn)}</h6>
-        {userId === user.id && (
+        {user && userId === user.id && (
           <div className="comment-settings-btn">
             {!deleteComment && (
               <>
@@ -162,46 +162,48 @@ const Comment = ({ comment, setComments }) => {
           <BiSolidLike />
         </button>
       </div>
-      <div className="comment-container__footer">
-        <form onSubmit={handleSubmit} className="comment-form">
-          <div className="regular-input">
-            <input
-              type="text"
-              placeholder="respond..."
-              value={subCommentText}
-              onChange={(e) => setSubCommentText(e.target.value)}
-            />
-          </div>
-          <div className="comment-form__btns switch-btn">
-            {subCommentText.length ? (
-              <button type="button">
-                <GiBackwardTime />
+      {user && (
+        <div className="comment-container__footer">
+          <form onSubmit={handleSubmit} className="comment-form">
+            <div className="regular-input">
+              <input
+                type="text"
+                placeholder="respond..."
+                value={subCommentText}
+                onChange={(e) => setSubCommentText(e.target.value)}
+              />
+            </div>
+            <div className="comment-form__btns switch-btn">
+              {subCommentText.length ? (
+                <button type="button">
+                  <GiBackwardTime />
+                </button>
+              ) : (
+                ""
+              )}
+              <button type="submit">
+                <FaLongArrowAltRight />
               </button>
-            ) : (
-              ""
-            )}
-            <button type="submit">
-              <FaLongArrowAltRight />
-            </button>
+            </div>
+          </form>
+          <div
+            className="sub-comments-container"
+            style={{
+              height: subComments.length > 1 ? "200px" : "auto",
+              overflow: "scroll",
+            }}
+          >
+            {subComments.map((subComment) => (
+              <SubComment
+                key={subComment.id}
+                subComment={subComment}
+                setSubComments={setSubComments}
+                postId={postId}
+              />
+            ))}
           </div>
-        </form>
-        <div
-          className="sub-comments-container"
-          style={{
-            height: subComments.length > 1 ? "200px" : "auto",
-            overflow: "scroll",
-          }}
-        >
-          {subComments.map((subComment) => (
-            <SubComment
-              key={subComment.id}
-              subComment={subComment}
-              setSubComments={setSubComments}
-              postId={postId}
-            />
-          ))}
         </div>
-      </div>
+      )}
     </div>
   );
 };

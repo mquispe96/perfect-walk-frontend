@@ -108,7 +108,7 @@ const Credentials = ({
           </div>
         </div>
       )}
-      <div className="signup-form__sectioni main-btns">
+      <div className="signup-form__section main-btns">
         <button
           type="button"
           onClick={() => {
