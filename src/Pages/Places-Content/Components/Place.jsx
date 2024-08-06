@@ -11,8 +11,9 @@ const Place = ({place}) => {
       setImageIndex((prev) => {
         if (prev === place?.images.length - 1) {
           return 0;
+        } else {
+          return prev + 1;
         }
-        return prev + 1;
       });
     }
     , 3000);

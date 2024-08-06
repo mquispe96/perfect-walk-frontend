@@ -24,7 +24,6 @@ const Places = () => {
       setState(location.place);
     }
   }, [location]);
-  console.log(places);
 
   return (
     <main className="places-container">
