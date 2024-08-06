@@ -3,6 +3,7 @@ import Layout from './Pages/Layout-Content/Layout';
 import Home from './Pages/Home-Content/Home';
 import Weather from './Pages/Weather-Content/Weather';
 import Places from './Pages/Places-Content/Places';
+import PlaceInfo from './Pages/Place-Info-Content/PlaceInfo';
 import About from './Pages/About-Content/About';
 import Profile from './Pages/Profile-Content/Profile';
 import LogIn from './Pages/LogIn-Content/LogIn';
@@ -18,6 +19,7 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path="/weather" element={<Weather />} />
         <Route path="/places" element={<Places />} />
+        <Route path="/place/:parkCode" element={<PlaceInfo />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<LogIn />} />

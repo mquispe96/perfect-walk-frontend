@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { CiSearch } from "react-icons/ci";
 
-const CurrentWeather = ({weather, setWeather}) => {
+const CurrentWeather = ({ weather, setWeather }) => {
   const BASE_URL = import.meta.env.VITE_API_URL;
   const [userInput, setUserInput] = useState("");
+  const { pathname } = useLocation();
 
   const getWeather = (e) => {
     e.preventDefault();
@@ -67,23 +69,27 @@ const CurrentWeather = ({weather, setWeather}) => {
           <p>Wind Degrees: {weather?.current?.windDeg}</p>
         </div>
       </div>
-      <div className="home-weather-container__footer">
-        <form onSubmit={getWeather}>
-          <div className="regular-input">
-            <input
-              type="text"
-              value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-              placeholder="Enter a location"
-            />
-          </div>
-          <div className="switch-btn">
-            <button type="submit">
-              <CiSearch />
-            </button>
-          </div>
-        </form>
-      </div>
+      {!pathname.includes("place") ? (
+        <div className="home-weather-container__footer">
+          <form onSubmit={getWeather}>
+            <div className="regular-input">
+              <input
+                type="text"
+                value={userInput}
+                onChange={(e) => setUserInput(e.target.value)}
+                placeholder="Enter a location"
+              />
+            </div>
+            <div className="switch-btn">
+              <button type="submit">
+                <CiSearch />
+              </button>
+            </div>
+          </form>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

@@ -443,6 +443,26 @@
   .home-container__right-panel {
     display: none;
   }
+  .home-weather-container {
+    padding: 1rem;
+  }
+  .home-weather-container__main {
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+    row-gap: 1rem;
+  }
+  .home-weather-container__main .weather-img {
+    grid-column: 1/span 2;
+    grid-row: 1/span 1;
+  }
+  .home-weather-container__main .weather-main-info {
+    grid-column: 1/span 1;
+    grid-row: 2/span 1;
+  }
+  .home-weather-container__main .weather-rest-info {
+    grid-column: 2/span 1;
+    grid-row: 2/span 1;
+  }
 }
 
 /*# sourceMappingURL=home.css.map */

@@ -28,4 +28,11 @@ html, body {
   margin: 0.2rem;
 }
 
+@media only screen and (min-width: 1500px) {
+  #root {
+    width: 75%;
+    margin: 0 auto;
+  }
+}
+
 /*# sourceMappingURL=index.css.map */
