@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { PageContext } from "../Context/PageContext";
 import CreatePost from "./Components/CreatePost";
 import Post from "./Components/Post";
 import CurrentWeather from "../Shared-Components/CurrentWeather";
+import Place from "../Places-Content/Components/Place";
 import "./Styling/home.css";
 
 const Home = () => {
@@ -36,7 +36,7 @@ const Home = () => {
   }, [location]);
 
   useEffect(() => {
-    if (location.latitude && location.longitude) {
+    if (location.place) {
       axios
         .get(`${BASE_URL}/locations/byState?stateCode=${location.place}`)
         .then((res) => setPlaces(res.data));
@@ -60,21 +60,7 @@ const Home = () => {
           <div className="recommended-place__header">
             <h3>Recommended Place Nearby</h3>
           </div>
-          <div className="place-box-container">
-            <div className="place-box-container__images-show">
-              <div className="slides">
-                {randomPlace?.images.map((image, index) => (
-                  <img key={index} src={image?.url} alt="place" />
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="recommended-place__text">
-            <h4>{randomPlace?.fullName}</h4>
-          </div>
-          <div className="recommended-place__see-more">
-            <Link to={`/place/${randomPlace?.parkCode}`}>See More</Link>
-          </div>
+          <Place place={randomPlace} />
         </div>
       </section>
     </main>
