@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext, useRef } from "react";
 import axios from "axios";
 import { PageContext } from "../../Context/PageContext";
+import Loading from "../../Shared-Components/Loading";
 import { LuImagePlus } from "react-icons/lu";
 import { CiCircleRemove } from "react-icons/ci";
 import { FcNext } from "react-icons/fc";
@@ -15,6 +16,7 @@ const CreatePost = ({ setPosts }) => {
   const [mediaPreview, setMediaPreview] = useState("");
   const [previewIndex, setPreviewIndex] = useState(0);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const inputRef = useRef();
   const onChooseFile = () => inputRef.current.click();
@@ -27,13 +29,16 @@ const CreatePost = ({ setPosts }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     if (!postText && !media.length) {
+      setLoading(false);
       setError("Post must contain text or media");
       setTimeout(() => {
         setError("");
       }, 5000);
       return;
     } else if (media.length > 5) {
+      setLoading(false);
       setError("Post can only contain up to 5 media files in total");
       setTimeout(() => {
         setError("");
@@ -51,7 +56,9 @@ const CreatePost = ({ setPosts }) => {
         });
         setPosts((prev) => [res.data, ...prev]);
         clearPost();
+        setLoading(false);
       } catch (err) {
+        setLoading(false);
         setError(err.response.data);
         setTimeout(() => {
           setError("");
@@ -132,7 +139,7 @@ const CreatePost = ({ setPosts }) => {
   }, [media, previewIndex]);
 
   useEffect(() => {
-    if(media.length > 5) {
+    if (media.length > 5) {
       setError("Post can only contain up to 5 media files in total");
       setTimeout(() => {
         setError("");
@@ -142,54 +149,58 @@ const CreatePost = ({ setPosts }) => {
 
   return (
     <div className="create-post">
-      <form className="create-form-container" onSubmit={handleSubmit}>
-        <div className="create-form-container__location">
-          <div className="regular-input">
-            <input
-              type="text"
-              placeholder="Post's Location..."
-              value={postLocation}
-              onChange={(e) => setPostLocation(e.target.value)}
-            />
+      {loading ? (
+          <Loading />
+      ) : (
+        <form className="create-form-container" onSubmit={handleSubmit}>
+          <div className="create-form-container__location">
+            <div className="regular-input">
+              <input
+                type="text"
+                placeholder="Post's Location..."
+                value={postLocation}
+                onChange={(e) => setPostLocation(e.target.value)}
+              />
+            </div>
           </div>
-        </div>
-        <div className="create-form-container__upload-media switch-btn">
-          <input
-            type="file"
-            multiple
-            ref={inputRef}
-            style={{ display: "none" }}
-            onChange={handleMediaSelection}
-            accept="image/*"
-          />
-          <button type="button" onClick={onChooseFile}>
-            <LuImagePlus />
-          </button>
-          <p>media: {media.length} / 5</p>
-        </div>
-        <div className="create-form-container__post-text">
-          <div className="regular-input">
+          <div className="create-form-container__upload-media switch-btn">
             <input
-              type="text"
-              placeholder="Post's Text..."
-              value={postText}
-              onChange={(e) => setPostText(e.target.value)}
+              type="file"
+              multiple
+              ref={inputRef}
+              style={{ display: "none" }}
+              onChange={handleMediaSelection}
+              accept="image/*"
             />
+            <button type="button" onClick={onChooseFile}>
+              <LuImagePlus />
+            </button>
+            <p>media: {media.length} / 5</p>
           </div>
-        </div>
-        <div className="create-form-container__media-preview">
-          {mediaPreview}
-        </div>
-        <div className="create-form-container__btns main-btns">
-          <button type="button" onClick={clearPost}>
-            Cancel
-          </button>
-          <button type="submit">Submit</button>
-        </div>
-        <div className="create-form-container__error">
-          {error && <p>{error}</p>}
-        </div>
-      </form>
+          <div className="create-form-container__post-text">
+            <div className="regular-input">
+              <input
+                type="text"
+                placeholder="Post's Text..."
+                value={postText}
+                onChange={(e) => setPostText(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="create-form-container__media-preview">
+            {mediaPreview}
+          </div>
+          <div className="create-form-container__btns main-btns">
+            <button type="button" onClick={clearPost}>
+              Cancel
+            </button>
+            <button type="submit">Submit</button>
+          </div>
+          <div className="create-form-container__error">
+            {error && <p>{error}</p>}
+          </div>
+        </form>
+      )}
     </div>
   );
 };
