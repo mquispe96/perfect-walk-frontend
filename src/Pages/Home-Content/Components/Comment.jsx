@@ -35,7 +35,7 @@ const Comment = ({ comment, setComments }) => {
     try {
       const res = await axios.post(
         `${BASE_URL}/posts/${postId}/comments/${id}/subcomments`,
-        { subCommentText, userId }
+        { subCommentText, userId: user.id}
       );
       setSubComments((prev) => [...prev, res.data]);
       setSubCommentText("");

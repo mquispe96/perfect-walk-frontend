@@ -29,7 +29,7 @@ const SubComment = ({ subComment, setSubComments, postId }) => {
     try {
       const res = await axios.put(
         `${BASE_URL}/posts/${postId}/comments/${commentId}/subcomments/${id}`,
-        { subCommentText }
+        { subCommentText, userId: user.id }
       );
       setSubComments((prev) =>
         prev.map((subComment) => (subComment.id === id ? res.data : subComment))
