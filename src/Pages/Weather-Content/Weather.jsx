@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import CurrentWeather from "../Shared-Components/CurrentWeather";
-import { useComponentVisible } from "../Custom-Hooks/useComponentVisible";
 import { PageContext } from "../Context/PageContext";
 import "./Styling/weather.css";
 
@@ -98,6 +97,39 @@ const Weather = () => {
                 <td>{day.rain}</td>
                 <td>{day.sunrise}</td>
                 <td>{day.sunset}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+      <section className="weather-container__daily-mobile">
+        <h3>Daily Forecast</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Min Temp</th>
+              <th>Max Temp</th>
+              <th>Humidity</th>
+              <th>Sky</th>
+              <th>%</th>
+            </tr>
+          </thead>
+          <tbody>
+            {weather.daily?.map((day, index) => (
+              <tr key={index}>
+                <td>{day.date}</td>
+                <td>{day.minTemp}</td>
+                <td>{day.maxTemp}</td>
+                <td>{day.humidity}</td>
+                <td>
+                  <img
+                    src={`${day.weather[0].main}.png`}
+                    alt={day.weather[0].description}
+                    style={{ width: "30px" }}
+                  />
+                </td>
+                <td>{day.pop}</td>
               </tr>
             ))}
           </tbody>
