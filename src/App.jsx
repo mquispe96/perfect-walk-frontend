@@ -1,4 +1,4 @@
-import {Route, Routes} from 'react-router-dom';
+import {Route, Routes, Navigate} from 'react-router-dom';
 import Layout from './Pages/Layout-Content/Layout';
 import Home from './Pages/Home-Content/Home';
 import Weather from './Pages/Weather-Content/Weather';
@@ -28,6 +28,7 @@ const App = () => {
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/delete-account" element={<DeleteUser />} />
       </Route>
+      <Route path="*" element={<Navigate to='/'/>} />
     </Routes>
   );
 };
