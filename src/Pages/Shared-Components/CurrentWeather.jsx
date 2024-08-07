@@ -56,10 +56,10 @@ const CurrentWeather = ({ weather, setWeather }) => {
           <p>Visibility: {weather?.current?.visibility}</p>
         </div>
         <div className="weather-rest-info">
-          {Number(weather?.current?.rain[0]) !== 0 && (
+          {/[0]\.[0-9]+\W[mm/h]/.test(weather?.current?.rain) && (
             <p>Rain: {weather?.current?.rain}</p>
           )}
-          {Number(weather?.current?.snow[0]) !== 0 && (
+          {/[0]\.[0-9]+\W[mm/h]/.test(weather?.current?.rain) && (
             <p>Snow: {weather?.current?.snow}</p>
           )}
           <p>Sunrise: {weather?.current?.sunrise}</p>

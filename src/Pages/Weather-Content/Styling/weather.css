@@ -1,0 +1,94 @@
+.weather-container {
+  grid-area: content;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  gap: 1rem;
+  padding: 1rem;
+  overflow: hidden;
+}
+.weather-container__current {
+  grid-column: 1/span 1;
+  grid-row: 1/span 1;
+}
+.weather-container__hourly {
+  grid-column: 2/span 1;
+  grid-row: 1/span 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  row-gap: 1rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 0 0.5rem 0.2rem rgba(163, 167, 169, 0.5);
+}
+.weather-container__hourly table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.weather-container__hourly table th, .weather-container__hourly table td {
+  border-bottom: 1px solid black;
+  padding: 0.5rem;
+  text-align: center;
+  width: 400px;
+}
+.weather-container__hourly table thead, .weather-container__hourly table tbody {
+  display: flex;
+  width: 100%;
+}
+.weather-container__hourly table tbody {
+  overflow: auto;
+  max-height: 200px;
+  display: block;
+}
+.weather-container__daily {
+  grid-column: 1/span 2;
+  grid-row: 2/span 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  row-gap: 1rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 0 0.5rem 0.2rem rgba(163, 167, 169, 0.5);
+}
+.weather-container__daily table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.weather-container__daily table th, .weather-container__daily table td {
+  border-bottom: 1px solid black;
+  padding: 0.5rem;
+  text-align: center;
+  width: 400px;
+}
+.weather-container__daily table thead, .weather-container__daily table tbody {
+  display: flex;
+  width: 100%;
+}
+.weather-container__daily table tbody {
+  overflow: auto;
+  max-height: 200px;
+  display: block;
+}
+
+@media screen and (max-width: 430px) {
+  .weather-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    overflow: auto;
+  }
+  .weather-container__current {
+    grid-column: 1/span 1;
+    grid-row: 1/span 1;
+  }
+  .weather-container__hourly {
+    grid-column: 1/span 1;
+    grid-row: 2/span 1;
+    padding: 1rem;
+  }
+  .weather-container__daily {
+    grid-column: 1/span 1;
+    grid-row: 3/span 1;
+  }
+}
+
+/*# sourceMappingURL=weather.css.map */
