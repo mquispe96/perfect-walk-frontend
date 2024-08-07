@@ -4,6 +4,10 @@
 
 A website to find a good place to walk, according to the weather and the location. When creating an account, the user can post about their adventures and share with others. This website aims to create a community of people who enjoy walking and exploring new places.
 
+[Perfect Walk Deploy](https://perfect-walk.netlify.app/)
+[Perfect Walk Backend Deploy](https://perfect-walk-backend.onrender.com/)
+[Perfect Walk Backend Repo](https://github.com/mquispe96/perfect-walk-backend)
+
 ## User Stories
 
 1. An user can create an account, log in and log out.
