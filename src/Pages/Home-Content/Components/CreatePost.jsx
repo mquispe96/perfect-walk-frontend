@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext, useRef } from "react";
 import axios from "axios";
 import { PageContext } from "../../Context/PageContext";
-import Loading from "../../Shared-Components/Loading";
 import { LuImagePlus } from "react-icons/lu";
 import { CiCircleRemove } from "react-icons/ci";
 import { FcNext } from "react-icons/fc";
@@ -150,7 +149,9 @@ const CreatePost = ({ setPosts }) => {
   return (
     <div className="create-post">
       {loading ? (
-          <Loading />
+          <div className="loader">
+            <h5>Loading...</h5>
+          </div>
       ) : (
         <form className="create-form-container" onSubmit={handleSubmit}>
           <div className="create-form-container__location">
